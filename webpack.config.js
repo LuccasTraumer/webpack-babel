@@ -9,11 +9,20 @@ module.exports = {
     },
     module: {
         rules: [
+            //Babel config
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                //If we want declare the preset of babel in config of webpack
+                // use: {
+                //     loader: "babel-loader",
+                //     options: {
+                //        presets: ['@babel/preset-env']
+                //     }
+                // }
             },
+            //style config
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
@@ -28,6 +37,13 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader: "file-loader",
+                options: {
+                    name: '[name].[ext]'
+                }
             }
         ]
     },
